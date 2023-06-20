@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Libs;
 
 import java.awt.BorderLayout;
@@ -258,7 +255,7 @@ public class CardLayout implements ItemListener, ActionListener {
         String action = ae.getActionCommand();
         if (action == "searchButton") {
             String keySlang = searchSlang.getText();
-            System.out.println("Search define by : " + searchSlang.getText());
+            System.out.println("Tìm từ được định nghĩa bởi : " + searchSlang.getText());
             ArrayList<String> defineResult = slangWordList.get(searchSlang.getText());
             slangResultLayout.removeAll();
 //            slangResultLayout.setLayout(new GridLayout(0,1,5,5)); 
@@ -281,17 +278,16 @@ public class CardLayout implements ItemListener, ActionListener {
                     e.printStackTrace();
                 }
             } else {
-                slangResultLayout.add(new JLabel("Not result..."));
+                slangResultLayout.add(new JLabel("zkhông tìm thấy kết quả..."));
             }
             slangLayout.add(slangResultLayout, BorderLayout.SOUTH);
             slangLayout.revalidate();
             slangLayout.repaint();
         } else if (action == "searchDefineButton") {
             String valueDefine = searchDefineTextField.getText();
-            System.out.println("Search slang by : " + searchDefineTextField.getText());
+            System.out.println("Tìm kiếm từ bởi : " + searchDefineTextField.getText());
             ArrayList<String> keyResult = new ArrayList<String>();
             defineResultLayout.removeAll();
-            //defineResultLayout.setLayout(new GridLayout(0,1,5,5)); 
 
             for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
                 if (entry.getValue().contains(valueDefine)) {
@@ -329,7 +325,7 @@ public class CardLayout implements ItemListener, ActionListener {
             System.out.println("Click create button");
             System.out.println(createSlangTextField.getText());
             addSlangWordFunction();
-            System.out.println("add new slang comppleted");
+            System.out.println("Thêm từ đã hoàn tất");
         }
         if (action == "editButton") {
             eidtSlangFunction();
@@ -391,9 +387,9 @@ public class CardLayout implements ItemListener, ActionListener {
 
         createSlangTextField = new JTextField("", 20);
         createDefineTextField = new JTextField("", 20);
-        JLabel labelSlang = new JLabel("Enter slang: ");
-        JLabel labelDefine = new JLabel("Enter define: ");
-        JButton createButton = new JButton("Create");
+        JLabel labelSlang = new JLabel("Nhập từ: ");
+        JLabel labelDefine = new JLabel("Nhập định nghĩa: ");
+        JButton createButton = new JButton("Tạo");
         createButton.setActionCommand("createButton");
         createButton.addActionListener(this);
 
@@ -420,7 +416,7 @@ public class CardLayout implements ItemListener, ActionListener {
 
         // set border for the panel
         createLayout.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createEtchedBorder(), "Create new slang"));
+                BorderFactory.createEtchedBorder(), "Tạo từ vựng mới"));
 
         // add the panel to this frame
 //        add(createLayout);
@@ -433,7 +429,7 @@ public class CardLayout implements ItemListener, ActionListener {
         String slang = createSlangTextField.getText();
         String define = createDefineTextField.getText();
         if (slang != "" && define != "") {
-            System.out.println("add new slang");
+            System.out.println("Thêm mới từ");
             if (slangWordList.keySet().contains(slang)) {
                 String[] options = {"Duplicate","Overwrite", "Cancel"}; 
                 int result = JOptionPane.showOptionDialog(null, "This word already exists. Do you want to duplicate it?", "Message: " + "Add new slang word", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,options, options[0]);
@@ -481,9 +477,9 @@ public class CardLayout implements ItemListener, ActionListener {
         editDefineTextField = new JTextField("", 20);
         
         
-        JLabel editLabelSlang = new JLabel("Enter slang you want edit: ");
-        JLabel  editLabelDefine = new JLabel("Enter new define: ");
-        JButton editButton = new JButton("Update");
+        JLabel editLabelSlang = new JLabel("Nhập từ mà bạn muốn sửa: ");
+        JLabel  editLabelDefine = new JLabel("Nhập từ mới: ");
+        JButton editButton = new JButton("Sửa");
         editButton.setActionCommand("editButton");
         editButton.addActionListener(this);
 
@@ -510,40 +506,18 @@ public class CardLayout implements ItemListener, ActionListener {
 
         // set border for the panel
         editLayout.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createEtchedBorder(), "Eidit slang word"));
+                BorderFactory.createEtchedBorder(), "Cập nhật từ vựng"));
     }
     
     public void eidtSlangFunction(){
-        System.out.println("Click edit button");
-        System.out.println("Slang word edit " + editSlangTextField.getText());
-        System.out.println("Define edit " + editDefineTextField.getText());
+        System.out.println("Sửa");
+        System.out.println("Sửa từ vựng " + editSlangTextField.getText());
+        System.out.println("Sửa định nghĩa " + editDefineTextField.getText());
         String editslang = editSlangTextField.getText();
         String editdefine = editDefineTextField.getText();
         
-//        if (editslang != "" && editdefine != "") {
-//            JOptionPane.showConfirmDialog(null, 
-//                "Slang word and definfe not empty", "Be ok!", JOptionPane.DEFAULT_OPTION);
-//        }
-//        else{
-//            System.out.println("edit new slang");
-//            if (slangWordList.keySet().contains(editslang)) {
-//                 for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
-//                        if (entry.getKey().contains(editslang)) {
-//                            entry.getValue().clear();
-//                            entry.getValue().add(editdefine);
-//                            break;
-//                        }
-//                    }
-//                 JOptionPane.showConfirmDialog(null, 
-//                "Edit  slang comppleted", "Be ok!", JOptionPane.DEFAULT_OPTION);
-//                System.out.println("edit  slang comppleted");
-//            }else{
-//                JOptionPane.showConfirmDialog(null, 
-//                "Slang word doesn't exist", "Be ok!", JOptionPane.DEFAULT_OPTION);
-//            } 
-//            
-//        }
-        System.out.println("edit new slang");
+
+        System.out.println("Cập nhật từ mứi");
         if (slangWordList.keySet().contains(editslang)) {
             for (Map.Entry<String, ArrayList<String>> entry : slangWordList.entrySet()) {
                 if (entry.getKey().contains(editslang)) {
@@ -553,11 +527,11 @@ public class CardLayout implements ItemListener, ActionListener {
                 }
             }
             JOptionPane.showConfirmDialog(null,
-                    "Edit  slang comppleted", "Be ok!", JOptionPane.DEFAULT_OPTION);
-            System.out.println("edit  slang comppleted");
+                    "Cập nhật từ vựng hoàn tất", "Be ok!", JOptionPane.DEFAULT_OPTION);
+            System.out.println("Cập nhật từ vựng hoàn tất");
         } else {
             JOptionPane.showConfirmDialog(null,
-                    "Slang word doesn't exist", "Be ok!", JOptionPane.DEFAULT_OPTION);
+                    "Từ vựng này không tồn tại", "Be ok!", JOptionPane.DEFAULT_OPTION);
         }
     }
     
